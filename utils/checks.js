@@ -85,11 +85,11 @@ class ConditionChecker {
 
     getErrorMessage(conditions, action = 'play') {
         if (!conditions.userInVoice) {
-            return '❌ You need to be in a voice channel to use music commands!';
+            return '❌ A zenei parancsok használatához hangcsatornán kell lenned!';
         }
 
         if (!conditions.canJoinVoice) {
-            return '❌ I don\'t have permission to join your voice channel!';
+            return '❌ Nincs engedélyem csatlakozni a hangcsatornádhoz!';
         }
 
 
@@ -97,7 +97,7 @@ class ConditionChecker {
 
             if (conditions.botInCentralVC && !conditions.fromCentral) {
                 if (conditions.centralEnabled && conditions.centralVC) {
-                    return `❌ I'm currently in the central music system! Join <#${conditions.centralVC}> or use the central channel to control music.`;
+                    return `❌ Jelenleg a központi zenei rendszerben vagyok! Csatlakozz a <#${conditions.centralVC}> csatornához, vagy használd a központi csatornát a zene vezérléséhez.`;
                 }
             }
 
@@ -105,15 +105,15 @@ class ConditionChecker {
                 return null;
             }
 
-            return '❌ I\'m already playing music in a different voice channel!';
+            return '❌ Már egy másik hangcsatornán játszom zenét!';
         }
 
         if (action === 'skip' && !conditions.isPlaying) {
-            return '❌ Nothing is currently playing to skip!';
+            return '❌ Jelenleg nincs lejátszott tartalom, amit átugorhatnál!';
         }
 
         if (action === 'pause' && !conditions.isPlaying) {
-            return '❌ Nothing is currently playing to pause!';
+            return '❌ Jelenleg nincs lejátszott tartalom, amit szüneteltethetnél!';
         }
 
         return null;
@@ -121,3 +121,4 @@ class ConditionChecker {
 }
 
 module.exports = ConditionChecker;
+
