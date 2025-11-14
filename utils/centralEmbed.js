@@ -48,7 +48,7 @@ class CentralEmbedHandler {
                     {
                         name: '🚀 Mit tudok én mint DJ?',
                         value: [
-                            '• 🎵 iváló minőségű hang',
+                            '• 🎵 Kiváló minőségű hang',
                             '• 📜 Lejátszásilista kezelés', 
                             '• 🔁 Ismétlés & Keverő mód',
                             '• 🎛️ Hangerő szabályzás',
@@ -194,7 +194,7 @@ class CentralEmbedHandler {
                     ].join('\n'))
                     .setColor(embedColor)
                     .setFooter({ 
-                        text: `N.J. | FáZoltán Music Bot • ${statusText} • Developed By BABLO`,
+                        text: `N.J. | FáZoltán Music Bot • Developed By BABLO`,
                         iconURL: this.client.user.displayAvatarURL()
                     })
                     .setTimestamp();
@@ -354,4 +354,5 @@ class CentralEmbedHandler {
 }
 
 module.exports = CentralEmbedHandler;
+
 
