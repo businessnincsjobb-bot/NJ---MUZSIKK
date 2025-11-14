@@ -4,7 +4,7 @@ class GarbageCollector {
         setInterval(() => {
             if (global.gc) {
                 global.gc();
-                console.log('🗑️ Garbage collection completed');
+                console.log('🗑️ A szemétgyűjtés befejeződött');
             }
         }, 600000);
         
@@ -18,7 +18,7 @@ class GarbageCollector {
                 
                 if (global.gc) {
                     global.gc();
-                    console.log('🗑️ Forced garbage collection due to high memory');
+                    console.log('🗑️ Kényszerű szemétgyűjtés a magas memóriahasználat miatt');
                 }
             }
         }, 300000);
@@ -27,9 +27,10 @@ class GarbageCollector {
     static forceCleanup() {
         if (global.gc) {
             global.gc();
-            console.log('🗑️ Manual garbage collection');
+            console.log('🗑️ Kézi szemétgyűjtés');
         }
     }
 }
 
 module.exports = GarbageCollector;
+
