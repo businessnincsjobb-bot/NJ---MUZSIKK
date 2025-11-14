@@ -29,14 +29,14 @@ class PlayerHandler {
 
             return player;
         } catch (error) {
-            console.error('Player creation error:', error.message);
+            console.error('Lejátszó létrehozási hiba:', error.message);
             return null;
         }
     }
 
     async playSong(player, query, requester) {
         try {
-            if (!player) return { type: 'error', message: 'Player not available' };
+            if (!player) return { type: 'error', message: 'A lejátszó nem elérhető' };
 
             const resolve = await this.client.riffy.resolve({ 
                 query: query, 
@@ -82,12 +82,12 @@ class PlayerHandler {
                 };
 
             } else {
-                return { type: 'error', message: 'No results found' };
+                return { type: 'error', message: 'Nincs találat' };
             }
 
         } catch (error) {
             console.error('Play song error:', error.message);
-            return { type: 'error', message: 'Failed to play song' };
+            return { type: 'error', message: 'A dal lejátszása nem sikerült' };
         }
     }
 
@@ -148,7 +148,7 @@ class PlayerHandler {
                 queueLength: player.queue.size || 0
             };
         } catch (error) {
-            console.error('Get player info error:', error.message);
+            console.error('Hiba a lejátszó információk lekérésénél:', error.message);
             return null;
         }
     }
@@ -157,7 +157,7 @@ class PlayerHandler {
         this.client.riffy.on('trackStart', async (player, track) => {
             try {
                 const trackTitle = track?.info?.title || 'Unknown Track';
-                console.log(`🎵 Started playing: ${trackTitle} in ${player.guildId}`);
+                console.log(`🎵 Elkezdtem lejátszani a következőt: ${trackTitle} in ${player.guildId}`);
                 
                 if (this.client.statusManager) {
                     await this.client.statusManager.onTrackStart(player.guildId);
@@ -186,7 +186,7 @@ class PlayerHandler {
         this.client.riffy.on('trackEnd', async (player, track) => {
             try {
                 const trackTitle = track?.info?.title || 'Unknown Track';
-                console.log(`🎵 Finished playing: ${trackTitle} in ${player.guildId}`);
+                console.log(`🎵 Befejeztem a lejátszását ennek: ${trackTitle} in ${player.guildId}`);
                 
                 if (this.client.statusManager) {
                     await this.client.statusManager.onTrackEnd(player.guildId);
@@ -198,7 +198,7 @@ class PlayerHandler {
 
         this.client.riffy.on('queueEnd', async (player) => {
             try {
-                console.log(`🎵 Queue ended in ${player.guildId}`);
+                console.log(`🎵 A lista véget ért ${player.guildId}`);
         
                 await this.centralEmbed.updateCentralEmbed(player.guildId, null);
         
@@ -217,26 +217,26 @@ class PlayerHandler {
                     player.destroy();
                 }
             } catch (error) {
-                console.error('Queue end error:', error.message);
+                console.error('Lista végének hibája:', error.message);
                 try {
                     player.destroy();
                 } catch (destroyError) {
-                    console.error('Player destroy error:', destroyError.message);
+                    console.error('Lejátszó megsemmisítési hiba:', destroyError.message);
                 }
             }
         });
 
         this.client.riffy.on('playerCreate', async (player) => {
             try {
-                console.log(`🎵 Player created for guild ${player.guildId}`);
+                console.log(`🎵 A lejátszó számára létrehozott ${player.guildId}`);
             } catch (error) {
-                console.error('Player create error:', error.message);
+                console.error('Lejátszó létrehozási hiba:', error.message);
             }
         });
 
         this.client.riffy.on('playerDisconnect', async (player) => {
             try {
-                console.log(`🎵 Player destroyed for guild ${player.guildId}`);
+                console.log(`🎵 Lejátszó megsemmisült ${player.guildId}`);
                 
                 if (this.client.statusManager) {
                     await this.client.statusManager.onPlayerDisconnect(player.guildId);
@@ -244,18 +244,19 @@ class PlayerHandler {
                 
                 await this.centralEmbed.updateCentralEmbed(player.guildId, null);
             } catch (error) {
-                console.error('Player disconnect error:', error.message);
+                console.error('Lejátszó kapcsolat megszakadási hiba:', error.message);
             }
         });
 
         this.client.riffy.on('nodeError', (node, error) => {
-            console.error('🔴 Riffy Node Error:', error.message);
+            console.error('🔴 Riffy csomópont hiba', error.message);
         });
 
         this.client.riffy.on('nodeDisconnect', (node) => {
-            console.log('🟡 Riffy Node Disconnected:', node.name);
+            console.log('🟡 Riffy csomópont leválasztva:', node.name);
         });
     }
 }
 
 module.exports = PlayerHandler;
+
