@@ -28,15 +28,15 @@ class CentralEmbedHandler {
             .setAuthor({ name: 'Ultimate Music Control Center', iconURL: 'https://cdn.discordapp.com/emojis/896724352949706762.gif', url: 'https://discord.gg/xQF9f9yUEM' })
                 .setDescription([
                     '',
-                    '- Simply type a **song name** or **YouTube link** to start the party!',
-                    '- In free version I only support **YouTube** only.',
+                    '- Egyszerűen írja be a **dal nevét** vagy a **YouTube linkjét**, és kezdődhet a buli!',
+                    '- Jelenleg csak a **YouTube**-ot támogatom.',
                     '',
-                    '✨ *Ready to fill this place with amazing music?*'
+                    '✨ *Készen állsz arra, hogy ezt a helyet zenével töltsd meg?*'
                 ].join('\n'))
                 .setColor(0x9966ff) 
                 .addFields(
                     {
-                        name: '🎯 Quick Examples',
+                        name: '🎯 Például',
                         value: [
                             '• `shape of you`',
                             '• `lofi hip hop beats`',
@@ -46,30 +46,30 @@ class CentralEmbedHandler {
                         inline: true
                     },
                     {
-                        name: '🚀 Features',
+                        name: '🚀 Mit tudok én mint DJ?',
                         value: [
-                            '• 🎵 High quality audio',
-                            '• 📜 Queue management', 
-                            '• 🔁 Loop & shuffle modes',
-                            '• 🎛️ Volume controls',
-                            '• ⚡ Lightning fast search'
+                            '• 🎵 iváló minőségű hang',
+                            '• 📜 Lejátszásilista kezelés', 
+                            '• 🔁 Ismétlés & Keverő mód',
+                            '• 🎛️ Hangerő szabályzás',
+                            '• ⚡ Villámgyors keresés'
                         ].join('\n'),
                         inline: true
                     },
                     {
-                        name: '💡 Pro Tips',
+                        name: '💡 Pro Tippek',
                         value: [
-                            '• Join voice channel first',
-                            '• Use specific song names',
-                            '• Try artist + song combo',
-                            '• Playlists are supported!'
+                            '• Először csatlakozz egy hangcsatornához',
+                            '• Használj konkrét dalneveket',
+                            '• Próbálj ki a előadó + dal kombinációt',
+                            '• A lejátszási listák támogatottak!'
                         ].join('\n'),
                         inline: false
                     }
                 )
                 .setImage('https://i.ibb.co/DDSdKy31/ezgif-8aec7517f2146d.gif')
                 .setFooter({ 
-                    text: 'Ultimate Music Bot • Developed By GlaceYT!',
+                    text: 'N.J. | FáZoltán Music Bot • Developed By BABLO',
                     iconURL: this.client.user.displayAvatarURL()
                 })
                 .setTimestamp();
@@ -170,7 +170,7 @@ class CentralEmbedHandler {
             
             if (trackInfo) {
                 const statusEmoji = trackInfo.paused ? '⏸️' : '▶️';
-                const statusText = trackInfo.paused ? 'Paused' : 'Now Playing';
+                const statusText = trackInfo.paused ? 'Szüneteltetve' : 'Most játszott';
                 const loopEmoji = this.getLoopEmoji(trackInfo.loop);
                 const embedColor = trackInfo.paused ? 0xFFA500 : 0x9966ff;
                 
@@ -183,18 +183,18 @@ class CentralEmbedHandler {
                         url: 'https://discord.gg/xQF9f9yUEM' 
                     })
                     .setDescription([
-                        `**🎤 Artist:** ${trackInfo.author}`,
-                        `**👤 Requested by:** <@${trackInfo.requester.id}>`,
+                        `**🎤 Előadó:** ${trackInfo.author}`,
+                        `**👤 Beküldő:** <@${trackInfo.requester.id}>`,
                         '',
-                        `⏰ **Duration:** \`${this.formatDuration(trackInfo.duration)}\``,
-                        `${loopEmoji} **Loop:** \`${trackInfo.loop || 'Off'}\``,
-                        `🔊 **Volume:** \`${trackInfo.volume || 50}%\``,
+                        `⏰ **Hossz:** \`${this.formatDuration(trackInfo.duration)}\``,
+                        `${loopEmoji} **Ismétlés:** \`${trackInfo.loop || 'Off'}\``,
+                        `🔊 **Hangerő:** \`${trackInfo.volume || 50}%\``,
                         '',
-                        '🎶 *Enjoying the vibes? Type more song names below to keep the party going!*'
+                        '🎶 *Élvezed a hangulatot? Tegyél próbára mégtöbb dallal és élvezd a pillanatot!*'
                     ].join('\n'))
                     .setColor(embedColor)
                     .setFooter({ 
-                        text: `Ultimate Music Bot • ${statusText} • Developed By GlaceYT`,
+                        text: `N.J. | FáZoltán Music Bot • ${statusText} • Developed By BABLO`,
                         iconURL: this.client.user.displayAvatarURL()
                     })
                     .setTimestamp();
@@ -216,15 +216,15 @@ class CentralEmbedHandler {
                 .setAuthor({ name: 'Ultimate Music Control Center', iconURL: 'https://cdn.discordapp.com/emojis/896724352949706762.gif', url: 'https://discord.gg/xQF9f9yUEM' })
                 .setDescription([
                     '',
-                    '- Simply type a **song name** or **YouTube link** to start the party!',
-                    '- In free version I only support **YouTube** only.',
+                    '- Egyszerűen írja be a **dal nevét** vagy a **YouTube linkjét**, és kezdődhet a buli!',
+                    '- Jelenleg csak a **YouTube**-ot támogatom.',
                     '',
-                    '✨ *Ready to fill this place with amazing music?*'
+                    '✨ *Készen állsz arra, hogy ezt a helyet zenével töltsd meg?*'
                 ].join('\n'))
                 .setColor(0x9966ff) 
                 .addFields(
                     {
-                        name: '🎯 Quick Examples',
+                        name: '🎯 Például',
                         value: [
                             '• `shape of you`',
                             '• `lofi hip hop beats`',
@@ -234,30 +234,30 @@ class CentralEmbedHandler {
                         inline: true
                     },
                     {
-                        name: '🚀 Features',
+                        name: '🚀 Mit tudok én mint DJ?',
                         value: [
-                            '• 🎵 High quality audio',
-                            '• 📜 Queue management', 
-                            '• 🔁 Loop & shuffle modes',
-                            '• 🎛️ Volume controls',
-                            '• ⚡ Lightning fast search'
+                            '• 🎵 Kiváló minőségű hang',
+                            '• 📜 Lejátszásilista kezelés', 
+                            '• 🔁 Ismétlés & Keverő mód',
+                            '• 🎛️ Hangerő szabályzás',
+                            '• ⚡ Villámgyors keresés'
                         ].join('\n'),
                         inline: true
                     },
                     {
-                        name: '💡 Pro Tips',
+                        name: '💡 Pro Tippek',
                         value: [
-                            '• Join voice channel first',
-                            '• Use specific song names',
-                            '• Try artist + song combo',
-                            '• Playlists are supported!'
+                            '• Először csatlakozz egy hangcsatornához',
+                            '• Használj konkrét dalneveket',
+                            '• Próbálj ki a előadó + dal kombinációt',
+                            '• A lejátszási listák támogatottak!'
                         ].join('\n'),
                         inline: false
                     }
                 )
                 .setImage('https://i.ibb.co/DDSdKy31/ezgif-8aec7517f2146d.gif')
                 .setFooter({ 
-                    text: 'Ultimate Music Bot • Developed By GlaceYT!',
+                    text: 'N.J. | FáZoltán Music Bot • Developed By BABLO',
                     iconURL: this.client.user.displayAvatarURL()
                 })
                 .setTimestamp();
@@ -354,3 +354,4 @@ class CentralEmbedHandler {
 }
 
 module.exports = CentralEmbedHandler;
+
