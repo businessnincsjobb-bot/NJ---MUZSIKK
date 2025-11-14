@@ -24,7 +24,7 @@ class StatusManager {
                 await this.clearVoiceChannelStatus(guildId);
             }
         } catch (error) {
-            console.error('❌ Error updating status and voice channel:', error);
+            console.error('❌ Hiba a státusz a hangcsatorna frissítésekor:', error);
         }
     }
 
@@ -53,11 +53,11 @@ class StatusManager {
                     }],
                     status: 'online'
                 });
-                console.log(`🔄 Status refreshed: ${activity}`);
+                console.log(`🔄 Állapot frissítve: ${activity}`);
             }
         }, 30000);
         
-        console.log(`✅ Status locked to: ${activity}`);
+        console.log(`✅ Állapot zárolva: ${activity}`);
     }
 
 
@@ -85,7 +85,7 @@ class StatusManager {
             const permissions = voiceChannel.permissionsFor(botMember);
             
             if (!permissions?.has('ManageChannels')) {
-                console.warn(`⚠️ Bot lacks 'Manage Channels' permission in ${voiceChannel.name}`);
+                console.warn(`⚠️ A botnak nincs „Csatorna kezelési” jogosultsága az alábbi helyen ${voiceChannel.name}`);
                 return;
             }
 
@@ -101,7 +101,7 @@ class StatusManager {
             await this.createChannelName(voiceChannel, trackTitle);
 
         } catch (error) {
-            console.error(`❌ Voice channel status creation failed: ${error.message}`);
+            console.error(`❌ A hangcsatorna állapotának létrehozása sikertelen: ${error.message}`);
         }
     }
 
@@ -141,7 +141,7 @@ class StatusManager {
     
             const permissions = voiceChannel.permissionsFor(botMember);
             if (!permissions?.has('ManageChannels')) {
-                console.warn(`⚠️ Bot lacks 'Manage Channels' permission in ${voiceChannel.name}`);
+                console.warn(`⚠️ A botnak nincs „Csatorna kezelési” jogosultsága az alábbi helyen ${voiceChannel.name}`);
                 return;
             }
 
@@ -155,7 +155,7 @@ class StatusManager {
             await this.deleteChannelName(voiceChannel);
 
         } catch (error) {
-            console.error(`❌ Voice channel status clearing failed: ${error.message}`);
+            console.error(`❌ A hangcsatorna állapotának létrehozása sikertelen: ${error.message}`);
         }
     }
 
@@ -165,10 +165,10 @@ class StatusManager {
             await this.client.rest.put(`/channels/${channelId}/voice-status`, {
                 body: { status: statusText }
             });
-            console.log(`✅ Voice status created: ${statusText}`);
+            console.log(`✅ Hangállapot létrehozva: ${statusText}`);
             return true;
         } catch (error) {
-            console.log(`ℹ️ Voice status API not available for creation`);
+            console.log(`ℹ️ A hangállapot API nem áll rendelkezésre létrehozáshoz`);
             return false;
         }
     }
@@ -180,16 +180,16 @@ class StatusManager {
             await this.client.rest.put(`/channels/${channelId}/voice-status`, {
                 body: { status: null }
             });
-            console.log(`✅ Voice status cleared`);
+            console.log(`✅ Hangállapot törölve`);
             return true;
         } catch (error) {
             try {
              
                 await this.client.rest.delete(`/channels/${channelId}/voice-status`);
-                console.log(`✅ Voice status deleted`);
+                console.log(`✅ Hangállapot törölve`);
                 return true;
             } catch (deleteError) {
-                console.log(`ℹ️ Voice status API not available for deletion`);
+                console.log(`ℹ️ A hangállapot API nem áll rendelkezésre törléshez`);
                 return false;
             }
         }
@@ -198,12 +198,12 @@ class StatusManager {
 
     async createChannelTopic(voiceChannel, trackTitle) {
         try {
-            const topicText = `🎵 Now Playing: ${trackTitle}`;
+            const topicText = `🎵 Most játszott: ${trackTitle}`;
             await voiceChannel.setTopic(topicText);
-            console.log(`✅ Voice channel topic created: ${topicText}`);
+            console.log(`✅ Hangcsatorna téma létrehozva: ${topicText}`);
             return true;
         } catch (error) {
-            console.log(`ℹ️ Channel topic creation failed: ${error.message}`);
+            console.log(`ℹ️ Csatorna téma létrehozása sikertelen: ${error.message}`);
             return false;
         }
     }
@@ -215,10 +215,10 @@ class StatusManager {
             const originalTopic = originalData?.originalTopic || null;
             
             await voiceChannel.setTopic(originalTopic);
-            console.log(`✅ Voice channel topic restored`);
+            console.log(`✅ Hangcsatorna téma visszaállítva`);
             return true;
         } catch (error) {
-            console.log(`ℹ️ Channel topic restoration failed: ${error.message}`);
+            console.log(`ℹ️ A csatorna téma helyreállítása sikertelen: ${error.message}`);
             return false;
         }
     }
@@ -236,11 +236,11 @@ class StatusManager {
 
             if (newName !== voiceChannel.name && newName.length <= 100) {
                 await voiceChannel.setName(newName);
-                console.log(`✅ Voice channel name created: ${newName}`);
+                console.log(`✅ Hangcsatorna név létrehozva: ${newName}`);
             }
             return true;
         } catch (error) {
-            console.warn(`⚠️ Channel name creation failed: ${error.message}`);
+            console.warn(`⚠️ Csatorna név létrehozása sikertelen: ${error.message}`);
             return false;
         }
     }
@@ -253,14 +253,14 @@ class StatusManager {
             
             if (originalName && originalName !== voiceChannel.name) {
                 await voiceChannel.setName(originalName);
-                console.log(`✅ Voice channel name restored: ${originalName}`);
+                console.log(`✅ Hangcsatorna neve visszaállítva: ${originalName}`);
                 
          
                 this.voiceChannelData.delete(voiceChannel.id);
             }
             return true;
         } catch (error) {
-            console.warn(`⚠️ Channel name restoration failed: ${error.message}`);
+            console.warn(`⚠️ A csatorna neve visszaállítási hiba: ${error.message}`);
             return false;
         }
     }
@@ -280,7 +280,7 @@ class StatusManager {
             status: 'online'
         });
         
-        console.log(`✅ Status reset to: ${defaultActivity}`);
+        console.log(`✅ Állapot visszaállítva: ${defaultActivity}`);
     }
 
   
@@ -334,13 +334,13 @@ class StatusManager {
 
 
     async testVoiceChannelCRUD(guildId, testText = 'Test Song') {
-        console.log(`🧪 Testing Voice Channel CRUD for guild ${guildId}`);
+        console.log(`🧪 A hangcsatorna CRUD tesztelése ${guildId}`);
         
         const results = [];
         
    
         await this.setVoiceChannelStatus(guildId, testText);
-        results.push('✅ CREATE: Status set');
+        results.push('✅ CREATE: Állapot beállítása');
         
         await new Promise(resolve => setTimeout(resolve, 3000)); 
         
@@ -359,10 +359,11 @@ class StatusManager {
         
   
         await this.clearVoiceChannelStatus(guildId);
-        results.push('🗑️ DELETE: Status cleared');
+        results.push('🗑️ TÖRLÉS: Állapot törölve');
         
         return results.join('\n');
     }
 }
 
 module.exports = StatusManager;
+
