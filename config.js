@@ -31,7 +31,7 @@ class EnterpriseConfigurationManager {
              */
             lavalink: {
                 host: EnvironmentVariableProcessor.LAVALINK_HOST || "zac.hidencloud.com", 
-                port: EnvironmentVariableProcessor.LAVALINK_PORT || "24627",       
+                port: EnvironmentVariableProcessor.LAVALINK_PORT || 24627,       
                 password: EnvironmentVariableProcessor.LAVALINK_PASSWORD || "Kaun.Yuvraj", 
                 secure: EnvironmentVariableProcessor.LAVALINK_SECURE === 'true' || false
             },
@@ -101,6 +101,7 @@ module.exports = primaryApplicationConfiguration;
  * Never share your bot token or database URI publicly!
  * Use environment variables in production!
  */
+
 
 
 
