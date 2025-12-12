@@ -30,9 +30,9 @@ class EnterpriseConfigurationManager {
              * Configure your Lavalink server for audio processing
              */
             lavalink: {
-                host: EnvironmentVariableProcessor.LAVALINK_HOST || "194.58.66.44", 
-                port: EnvironmentVariableProcessor.LAVALINK_PORT || 3660,       
-                password: EnvironmentVariableProcessor.LAVALINK_PASSWORD || "AYANO", 
+                host: EnvironmentVariableProcessor.LAVALINK_HOST || "pnode1.danbot.host", 
+                port: EnvironmentVariableProcessor.LAVALINK_PORT || 1186,       
+                password: EnvironmentVariableProcessor.LAVALINK_PASSWORD || "Kaun.Yuvraj", 
                 secure: EnvironmentVariableProcessor.LAVALINK_SECURE === 'true' || false
             },
             
@@ -45,7 +45,7 @@ class EnterpriseConfigurationManager {
                 ownerIds: ["1004206704994566164"],      // 👈 ADD YOUR DISCORD ID HERE
                 embedColor: 0x00AE86,               // 👈 Bot embed color (hex)
                 supportServer: "https://discord.gg/xQF9f9yUEM",    // 👈 Your support server link
-                defaultStatus: "🎵 Ready for music!"         // 👈 Bot status message
+                defaultStatus: "🎵 Ready for sex!"         // 👈 Bot status message
             },
             
             features: this.constructAdvancedFeatureConfiguration()
@@ -101,6 +101,7 @@ module.exports = primaryApplicationConfiguration;
  * Never share your bot token or database URI publicly!
  * Use environment variables in production!
  */
+
 
 
 
